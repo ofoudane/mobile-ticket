@@ -1,11 +1,15 @@
 <div class="open-hours custom text-color">
-<div class="heading1">
-  {{ 'open_hours.heading1' | translate }}
-</div>
-<div *ngIf="!branchSchedule" class="heading2">
-  {{ 'open_hours.heading2' | translate }}
-</div>
-<div *ngIf="!branchSchedule" class="content">
-  <open-hour-item class="row" [day]="item.day" [fromAndTo]="item.fromAndTo" *ngFor="let item of openHours"></open-hour-item>
-</div>
+  <div *ngIf="replacementHTML" class="replacement-container" [innerHTML]="replacementHTML">
+    replacementHTML
+  </div>
+  <div *ngIf="!replacementHTML" class="heading1">
+    {{ 'open_hours.heading1' | translate }}
+  </div>
+  <div *ngIf="!replacementHTML && !branchSchedule" class="heading2">
+    {{ 'open_hours.heading2' | translate }}
+  </div>
+  <div *ngIf="!replacementHTML && !branchSchedule" class="content">
+    <open-hour-item class="row" [day]="item.day" [fromAndTo]="item.fromAndTo" *ngFor="let item of openHours">
+    </open-hour-item>
+  </div>
 </div>
